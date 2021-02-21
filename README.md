@@ -1,1 +1,1 @@
-# checklist-backend
+# CheckList Application Server-side
