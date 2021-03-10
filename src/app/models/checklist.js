@@ -4,10 +4,12 @@ const expirationTimeSchema = new mongoose.Schema({
   expiratedAt: {
     type: Date,
     required: true,
+    default: new Date().toISOString()
   },
   isUndefined: {
     type: Boolean,
     required: true,
+    default: true
   },
   timeToAnswer: {
     type: Number,
@@ -57,6 +59,14 @@ const ChecklistSchema = new mongoose.Schema({
   descricao: {
     type: String,
     required: true,
+  },
+  answer_before: {
+    type: String,
+    required: true,
+  },
+  answer_after: {
+    type: String,
+    required: true
   },
   ativo: {
     type: Boolean,

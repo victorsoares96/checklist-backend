@@ -64,14 +64,14 @@ router.post('/register', async (req, res) => {
   const { name, message } = req.body;
   try {
     if(!name || !message) throw 'Erro: Nome ou comentário está vazio.'
-    await Feedback.create({ name, message });
+    const result = await Feedback.create({ name, message });
 
-    await telegram.sendMessage(process.env.TELEGRAM_CHAT_IDS, `
-      Olá! 
-      \nSegue abaixo a opnião sobre o checklist do ${name}.
-      \n"${message}"
-    `)
-    return res.send();
+    await telegram.sendMessage(-471032826, `
+    Olá! 
+    \nSegue abaixo a opnião sobre o checklist do ${name}.
+    \n"${message}"
+    `);
+    return res.send(result);
   } catch (error) {
     console.log(error);
     res.status(400).send({ error: error });
