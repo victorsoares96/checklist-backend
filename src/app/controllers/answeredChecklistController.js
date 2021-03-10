@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+<<<<<<< HEAD
 const telegram = require('../../config/telegram');
+=======
+>>>>>>> 35d6406903ca95532e86f8583249e45cd150bf15
 const Unity = require('../models/unity');
 const AnsweredChecklist = require('../models/answeredChecklist');
 const authMiddleware = require('../middlewares/auth');
@@ -224,10 +227,13 @@ router.delete('/delete/:id', async (req, res) => {
 router.post('/register', async (req, res) => {
   try {
     const answeredChecklist = await AnsweredChecklist.create(req.body);
+<<<<<<< HEAD
 
     await telegram.sendMessage(-471032826, `
     Checklist Respondido! \n\nChecklist: ${answeredChecklist.checklistName}\nLocal: ${answeredChecklist.checklistUnity.name}\nPor: ${answeredChecklist.answeredBy.name}\nSetor: ${answeredChecklist.checklistUserProps.sector.name}\nNota: ${answeredChecklist.nota}\nLink: https://checklistweb.netlify.app/checklist/answereds/${answeredChecklist._id}/view\n\nRespondido em: ${new Date(answeredChecklist.createdAt).toLocaleString('pt-BR', { timeZone: 'America/Fortaleza' })}
     `);
+=======
+>>>>>>> 35d6406903ca95532e86f8583249e45cd150bf15
     return res.send(answeredChecklist);
   } catch (error) {
     console.log(error);
